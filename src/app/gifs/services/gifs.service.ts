@@ -5,9 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class GifsService {
 
-  private _tagsHistory: string[] = [
+  private _tagsHistory: string[] = []
 
-  ]
   constructor() { }
 
   get tagsHistory(){
@@ -21,7 +20,6 @@ export class GifsService {
       this._tagsHistory = this._tagsHistory.filter( (oldTag) => oldTag !== tag)
     }
     this._tagsHistory.unshift(tag);
-
   }
 
   searchTag(tag: string): void{
@@ -29,7 +27,7 @@ export class GifsService {
 
     this.organizeHistory(tag);
 
-    this._tagsHistory.unshift(tag);
+
     console.log(this.tagsHistory)
   }
 
