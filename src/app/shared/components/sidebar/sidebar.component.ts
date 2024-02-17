@@ -20,4 +20,8 @@ export class SidebarComponent{
     return this.gifsService.tagsHistory;
     // console.log(tagList)
   }
+  searchTag(tag: string): void{
+    this.gifsService.searchTag(tag);
+  }
+
 }
