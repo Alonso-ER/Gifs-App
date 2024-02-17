@@ -4,6 +4,7 @@ import { SearchResponse, Gif } from './../interfaces/gifs.interfaces';
 
 const giphyApiKey = 'VAPx9CVkPk3EIYppjk01DvVelXstlygD'
 const giphyUrl = 'https://api.giphy.com/v1/gifs';
+const storage = localStorage;
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,10 @@ export class GifsService {
   private apiKey: string = giphyApiKey;
   private serviceUrl: string = giphyUrl;
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    this.loadLocalStorage();
+    console.log('Gifs Service Ready')
+   }
 
   get tagsHistory(){
     return [...this._tagsHistory];
@@ -30,7 +34,18 @@ export class GifsService {
       this._tagsHistory = this._tagsHistory.filter( (oldTag) => oldTag !== tag)
     }
     this._tagsHistory.unshift(tag);
-    this._tagsHistory = this.tagsHistory.splice(0,10)
+    this._tagsHistory = this.tagsHistory.splice(0,10);
+    this.saveLocalStorage();
+  }
+
+  private saveLocalStorage(): void{
+    storage.setItem('history', JSON.stringify(this._tagsHistory) );
+  }
+
+  private loadLocalStorage(): void{
+    if(!storage.getItem('history')) return;
+
+    this._tagsHistory = JSON.parse(storage.getItem('history')!);
   }
 
   searchTag(tag: string): void{
