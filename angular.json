@@ -23,12 +23,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/gifs-app",
+            "outputPath": "dist",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -37,12 +35,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -108,6 +101,7 @@
     }
   },
   "cli": {
-    "analytics": "c34782b3-9afb-4cc3-a146-7283e510d52d"
+    "analytics": "572c903f-f3d2-494f-861f-e4dc4e876f51"
   }
 }
+ 
