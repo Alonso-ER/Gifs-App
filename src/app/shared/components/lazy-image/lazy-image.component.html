@@ -4,8 +4,9 @@
   <img
   [src]="url"
   [alt]="alt"
-  class="card-img-top"
+  class="card-img-top animte__animated animete__fadeIn"
   (load)="onLoad()"
+  [ngStyle]="{display: hasLoaded ? '': 'none'}"
   >
 
   <img
